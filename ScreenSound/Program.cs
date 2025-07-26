@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using ScreenSound.Banco;
 using ScreenSound.Menus;
 using ScreenSound.Modelos;
@@ -55,14 +54,7 @@ bool EhProgramaConfigurado()
 
 void DefinirContext()
 {
-    var services = new ServiceCollection();
-
-    services.AddDbContext<ScreenSoundContext>(options =>
-        options.UseSqlServer(connectionString!).UseLazyLoadingProxies());
-
-    using var provider = services.BuildServiceProvider();
-
-    context = provider.GetRequiredService<ScreenSoundContext>();
+    context = new ScreenSoundContext(connectionString!);
 }
 
 void DefinirArtista()

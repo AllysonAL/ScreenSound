@@ -2,7 +2,7 @@
 
 namespace ScreenSound.Banco
 {
-    internal class DAL<T> where T : class
+    public class DAL<T> where T : class
     {
         private ScreenSoundContext Context { get; set; }
 
